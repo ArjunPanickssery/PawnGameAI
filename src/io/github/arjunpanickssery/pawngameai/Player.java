@@ -22,7 +22,7 @@ public abstract class Player {
                     if (board[i + color][j] == 0) {
                         moves.add(new Move(i, j, i + color, j, Move.ONE_SPACE_MOVE));
                         //Check for two space moves
-                        if (piece % Main.CAN_DOUBLE_MOVE == 0) {
+                        if (piece % Game.CAN_DOUBLE_MOVE == 0) {
                             if (board[i + 2 * color][j] == 0) {
                                 moves.add(new Move(i, j, i + 2 * color, j, Move.TWO_SPACE_MOVE));
                             }
@@ -34,9 +34,9 @@ public abstract class Player {
                             moves.add(new Move(i, j, i + color, j - 1, Move.REGULAR_CAPTURE));
                         }
                         //Check for en passant captures (going left)
-                        if ((color == Main.WHITE && i == board.length - 4) || (color == Main.WHITE && i == 3)) {
-                            if ((board[i][j - 1] % Main.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j - 1] == 0)) {
-                                moves.add(new Move(i, j, i + color, j - 1, Move.EN_PASSANT));
+                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.WHITE && i == 3)) {
+                            if ((board[i][j - 1] % Game.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j - 1] == 0)) {
+                                moves.add(new Move(i, j, i + color, j - 1, Move.EN_PASSANT_LEFT));
                             }
                         }
                     }
@@ -46,9 +46,9 @@ public abstract class Player {
                             moves.add(new Move(i, j, i + color, j + 1, Move.REGULAR_CAPTURE));
                         }
                         //Check for en passant captures (going right)
-                        if ((color == Main.WHITE && i == board.length - 4) || (color == Main.WHITE && i == 3)) {
-                            if ((board[i][j + 1] % Main.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j + 1] == 0)) {
-                                moves.add(new Move(i, j, i + color, j + 1, Move.EN_PASSANT));
+                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.WHITE && i == 3)) {
+                            if ((board[i][j + 1] % Game.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j + 1] == 0)) {
+                                moves.add(new Move(i, j, i + color, j + 1, Move.EN_PASSANT_RIGHT));
                             }
                         }
                     }
@@ -58,25 +58,23 @@ public abstract class Player {
         return moves;
     }
 
-    private int[] move(int[][] board, int color) {
+    public Move getMove(int[][] board, int color) {
         this.board = board;
         this.color = color;
         this.moves = getMoves();
 
-        Move move = getMove();
-        return new int[]{
-                move.getStartRow(),
-                move.getStartColumn(),
-                move.getEndRow(),
-                move.getEndColumn()};
+        if (getMoves().size() == 0) {
+            return null;
+        }
+        return computeMove();
     }
 
     private boolean isCorrectColor(int piece) {
-        return (piece != 0) && ((piece > 0) == (color == Main.WHITE));
+        return (piece != 0) && ((piece > 0) == (color == Game.WHITE));
     }
 
     //Abstract methods
-    public abstract Move getMove();
+    public abstract Move computeMove();
 
     public abstract String getName();
 }
