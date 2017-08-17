@@ -57,4 +57,16 @@ public class GameResult {
         return result;
     }
 
+    public String getResultString() {
+        switch (result) {
+            case RESULT_WHITE_WINS:
+                return "White Wins";
+            case RESULT_BLACK_WINS:
+                return "Black Wins";
+            case RESULT_DRAW:
+                return "Draw";
+        }
+        return null;
+    }
+
 }

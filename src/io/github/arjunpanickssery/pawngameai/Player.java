@@ -3,9 +3,9 @@ package io.github.arjunpanickssery.pawngameai;
 import java.util.ArrayList;
 
 public abstract class Player {
-    private int[][] board;
-    private int color;
-    private ArrayList<Move> moves;
+    public int[][] board;
+    public int color;
+    public ArrayList<Move> moves;
 
     public Player() {
     }
@@ -42,7 +42,7 @@ public abstract class Player {
                     }
                     if (j < board[0].length - 1) {
                         //Check for regular captures (going right)
-                        if (board[i + color][j - 1] != 0 && !isCorrectColor(board[i + color][j + 1])) {
+                        if (board[i + color][j + 1] != 0 && !isCorrectColor(board[i + color][j + 1])) {
                             moves.add(new Move(i, j, i + color, j + 1, Move.REGULAR_CAPTURE));
                         }
                         //Check for en passant captures (going right)
@@ -63,7 +63,7 @@ public abstract class Player {
         this.color = color;
         this.moves = getMoves();
 
-        if (getMoves().size() == 0) {
+        if (moves.size() == 0) {
             return null;
         }
         return computeMove();

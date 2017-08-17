@@ -24,15 +24,16 @@ public class Move {
     }
 
     public String getMoveString() {
-        return getColumnLetter(startRow)
-                + startColumn
+        return getColumnLetter(startColumn)
+                + (startRow + 1)
                 + "-"
-                + getColumnLetter(endRow)
-                + endColumn;
+                + getColumnLetter(endColumn)
+                + (endRow + 1);
     }
 
     private String getColumnLetter(int i) {
-        return ((i > 0) && (i < 27)) ? String.valueOf((char) (i + 64)) : null;
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        return Character.toString(alphabet[i]);
     }
 
     public int getStartRow() {

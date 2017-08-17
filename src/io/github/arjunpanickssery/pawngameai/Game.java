@@ -21,7 +21,7 @@ public class Game {
         this.blackPlayer = blackPlayer;
     }
 
-    private GameResult startGame() {
+    public GameResult startGame() {
         GameResult gameResult = new GameResult(numberOfRows, numberOfColumns, whitePlayer, blackPlayer);
         initializeBoard();
 
@@ -35,10 +35,21 @@ public class Game {
                 move = blackPlayer.getMove(board, BLACK);
             }
 
-            //If the couldn't move, the game is a draw
+            //Check for draws
             if (move == null) {
-                gameResult.setResult(GameResult.RESULT_DRAW);
-                return gameResult;
+                color *= -1;
+
+                if (color == WHITE) {
+                    move = whitePlayer.getMove(board, WHITE);
+                } else {
+                    move = blackPlayer.getMove(board, BLACK);
+                }
+
+                if (move == null) {
+                    gameResult.setResult(GameResult.RESULT_DRAW);
+                    //System.out.println("Drawn");
+                    return gameResult;
+                }
             }
 
             //Move the piece
@@ -69,16 +80,20 @@ public class Game {
                     break;
             }
 
+            printBoard();
+
             //Check if someone won
             for (int i : board[0]) {
                 if (i != 0) {
                     gameResult.setResult(GameResult.RESULT_BLACK_WINS);
+                    //System.out.println("Black wins");
                     return gameResult;
                 }
             }
             for (int i : board[numberOfRows - 1]) {
                 if (i != 0) {
                     gameResult.setResult(GameResult.RESULT_WHITE_WINS);
+                    //System.out.println("White wins");
                     return gameResult;
                 }
             }
@@ -86,7 +101,7 @@ public class Game {
         }
     }
 
-    private void initializeBoard() {
+    public void initializeBoard() {
         board = new int[numberOfRows][numberOfColumns];
 
         for (int i = 0; i < numberOfColumns; i++) {
@@ -95,4 +110,23 @@ public class Game {
         }
     }
 
+    public void printBoard() {
+        System.out.println("|---+---+---+---+---+---+---+---|");
+        for (int i = numberOfRows; --i >= 0; ) {
+            System.out.print("| ");
+            for (int n : board[i]) {
+                System.out.print((n == 0 ? " " : (n > 0 ? "X" : "O")) + " | ");
+            }
+            System.out.println();
+            System.out.println("|---+---+---+---+---+---+---+---|");
+        }
+        //System.out.println("+-------------------------------+");
+
+        System.out.println();
+        System.out.println();
+        System.out.println("=============================================");
+        System.out.println();
+        System.out.println();
+
+    }
 }
