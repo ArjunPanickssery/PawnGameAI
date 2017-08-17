@@ -25,6 +25,8 @@ public class Game {
         GameResult gameResult = new GameResult(numberOfRows, numberOfColumns, whitePlayer, blackPlayer);
         initializeBoard();
 
+        printBoard();
+
         Move move;
         int color = WHITE;
 
@@ -115,7 +117,7 @@ public class Game {
         for (int i = numberOfRows; --i >= 0; ) {
             System.out.print("| ");
             for (int n : board[i]) {
-                System.out.print((n == 0 ? " " : (n > 0 ? "X" : "O")) + " | ");
+                System.out.print((n == 0 ? " " : (n > 0 ? "W" : "B")) + " | ");
             }
             System.out.println();
             System.out.println("|---+---+---+---+---+---+---+---|");

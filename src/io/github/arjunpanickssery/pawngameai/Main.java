@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //testWinRate(new RandomPlayer(), new RandomPlayer());
 
-        Game game = new Game(8, 8, new InputPlayer(), new RandomPlayer());
+        Game game = new Game(8, 8, new RandomPlayer(), new InputPlayer());
         GameResult gr = game.startGame();
         System.out.println("RESULT:" + gr.getResult());
         System.out.println("RESULT:" + gr.getResult());

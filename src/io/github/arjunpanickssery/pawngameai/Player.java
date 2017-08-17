@@ -34,8 +34,11 @@ public abstract class Player {
                             moves.add(new Move(i, j, i + color, j - 1, Move.REGULAR_CAPTURE));
                         }
                         //Check for en passant captures (going left)
-                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.WHITE && i == 3)) {
-                            if ((board[i][j - 1] % Game.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j - 1] == 0)) {
+                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.BLACK && i == 3)) {
+                            if ((board[i][j - 1] != 0)
+                                    && (!isCorrectColor(board[i][j - 1]))
+                                    && (board[i][j - 1] % Game.CAN_BE_EN_PASSANTED == 0)
+                                    && (board[i + color][j - 1] == 0)) {
                                 moves.add(new Move(i, j, i + color, j - 1, Move.EN_PASSANT_LEFT));
                             }
                         }
@@ -46,8 +49,11 @@ public abstract class Player {
                             moves.add(new Move(i, j, i + color, j + 1, Move.REGULAR_CAPTURE));
                         }
                         //Check for en passant captures (going right)
-                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.WHITE && i == 3)) {
-                            if ((board[i][j + 1] % Game.CAN_BE_EN_PASSANTED == 0) && (board[i + color][j + 1] == 0)) {
+                        if ((color == Game.WHITE && i == board.length - 4) || (color == Game.BLACK && i == 3)) {
+                            if ((board[i][j + 1] != 0)
+                                    && (!isCorrectColor(board[i][j + 1]))
+                                    && (board[i][j + 1] % Game.CAN_BE_EN_PASSANTED == 0)
+                                    && (board[i + color][j + 1] == 0)) {
                                 moves.add(new Move(i, j, i + color, j + 1, Move.EN_PASSANT_RIGHT));
                             }
                         }
