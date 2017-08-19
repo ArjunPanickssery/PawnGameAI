@@ -67,7 +67,7 @@ public abstract class Player {
     public Move getMove(int[][] board, int color) {
         this.board = board;
         this.color = color;
-        this.moves = getMoves(board, color);
+        this.moves = getMoves(Game.copy(board), color);
 
         if (moves.size() == 0) {
             return null;

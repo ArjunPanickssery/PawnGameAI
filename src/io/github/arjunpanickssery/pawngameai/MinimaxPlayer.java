@@ -4,57 +4,94 @@ import java.util.ArrayList;
 
 
 public class MinimaxPlayer extends Player {
+    public static final int DEPTH = 10;
+
     @Override
     public Move computeMove() {
-        int bestScore = Integer.MIN_VALUE;
+        int bestScore;
         Move bestMove = null;
 
         int score;
-        for (Move move : moves) {
-            score = -negamax(playMove(board, move, color), 500, Integer.MIN_VALUE * color, Integer.MAX_VALUE * color, color);
-            if (score > bestScore) {
-                bestScore = score;
-                bestMove = move;
+        if (color == Game.WHITE) {
+            bestScore = Integer.MIN_VALUE;
+            for (Move move : moves) {
+                //System.out.println(moves.size());
+                score = minimax(playMove(Game.copy(board), move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.BLACK);
+                //System.out.println("Score of " + move.getMoveString() + ": " + score);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestMove = move;
+                }
             }
+            return bestMove;
+        } else {
+            bestScore = Integer.MAX_VALUE;
+            for (Move move : moves) {
+                score = minimax(playMove(Game.copy(board), move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.WHITE);
+                if (score < bestScore) {
+                    bestScore = score;
+                    bestMove = move;
+                }
+            }
+            return bestMove;
         }
-        System.out.println(bestMove.getMoveString());
-        return bestMove;
     }
 
-    public int negamax(int[][] board, int depth, int alpha, int beta, int color) {
+    public int minimax(int[][] board, int depth, int alpha, int beta, int color) {
+        if (depth == 0) {
+            return heuristicEval(board);
+        }
         //Check for wins
         for (int i : board[0]) {
             if (i != 0) {
-                return -1;
+                //System.out.println("Black Wins at depth = " + depth);
+                //Game.printBoard(board);
+                return -10 * DEPTH + depth;
             }
         }
         for (int i : board[board.length - 1]) {
             if (i != 0) {
-                return 1;
+                //System.out.println("Black Wins at depth = " + depth);
+                return 10 * DEPTH - depth;
             }
         }
 
         ArrayList<Move> moves = getMoves(board, color);
-
         //Check for draws
         if (moves.size() == 0) {
-            moves = getMoves(board, -color);
+            color *= -1;
+            moves = getMoves(board, color);
             if (moves.size() == 0) {
                 return 0;
             }
         }
 
-        int bestScore = Integer.MIN_VALUE;
-        int score;
-        for (Move move : moves) {
-            score = -negamax(playMove(board, move, color), depth - 1, -beta, -alpha, -color);
-            bestScore = (score > bestScore) ? score : bestScore;
-            alpha = (score > alpha) ? score : alpha;
-            if (alpha >= beta) {
-                return bestScore;
+        /*System.out.println("========   " + depth + "   ============");
+        for(Move m : moves){
+            System.out.println(m.getMoveString());
+        }*/
+        int bestScore;
+        if (color == Game.WHITE) {
+            bestScore = Integer.MIN_VALUE;
+            for (Move move : moves) {
+                bestScore = max(bestScore, minimax(playMove(Game.copy(board), move, color), depth - 1, alpha, beta, Game.BLACK));
+                alpha = max(alpha, bestScore);
+                if (beta <= alpha) {
+                    return bestScore;
+                }
             }
+            return bestScore;
+        } else {
+            bestScore = Integer.MAX_VALUE;
+            for (Move move : moves) {
+                bestScore = min(bestScore, minimax(playMove(Game.copy(board), move, color), depth - 1, alpha, beta, Game.WHITE));
+                beta = min(beta, bestScore);
+                if (beta <= alpha) {
+                    return bestScore;
+                }
+            }
+            return bestScore;
         }
-        return bestScore;
     }
 
     public int[][] playMove(int[][] board, Move move, int color) {
@@ -89,8 +126,30 @@ public class MinimaxPlayer extends Player {
         return board;
     }
 
+    public int heuristicEval(int[][] board) {
+        int eval = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] > 0) {
+                    eval++;
+                } else if (board[i][j] < 0) {
+                    eval--;
+                }
+            }
+        }
+        return eval;
+    }
+
     @Override
     public String getName() {
         return "Minimax Player";
+    }
+
+    public int max(int a, int b) {
+        return b > a ? b : a;
+    }
+
+    public int min(int a, int b) {
+        return b < a ? b : a;
     }
 }

@@ -25,26 +25,29 @@ public class Game {
         GameResult gameResult = new GameResult(numberOfRows, numberOfColumns, whitePlayer, blackPlayer);
         initializeBoard();
 
-        printBoard();
+        //printBoard();
 
         Move move;
         int color = WHITE;
 
         while (true) {
             if (color == WHITE) {
-                move = whitePlayer.getMove(board, WHITE);
+                move = whitePlayer.getMove(copy(board), WHITE);
+
             } else {
-                move = blackPlayer.getMove(board, BLACK);
+                move = blackPlayer.getMove(copy(board), BLACK);
             }
+            //System.out.println("After getting the move");
+            //printBoard();
 
             //Check for draws
             if (move == null) {
                 color *= -1;
 
                 if (color == WHITE) {
-                    move = whitePlayer.getMove(board, WHITE);
+                    move = whitePlayer.getMove(copy(board), WHITE);
                 } else {
-                    move = blackPlayer.getMove(board, BLACK);
+                    move = blackPlayer.getMove(copy(board), BLACK);
                 }
 
                 if (move == null) {
@@ -82,7 +85,7 @@ public class Game {
                     break;
             }
 
-            printBoard();
+            //printBoard();
 
             //Check if someone won
             for (int i : board[0]) {
@@ -130,5 +133,35 @@ public class Game {
         System.out.println("=============================================");
         System.out.println();
         System.out.println();
+    }
+
+    public static void printBoard(int[][] board) {
+        System.out.println("  |---+---+---+---+---+---+---+---|");
+        for (int i = board.length; --i >= 0; ) {
+            System.out.print(i + " | ");
+            for (int n : board[i]) {
+                System.out.print((n == 0 ? " " : (n > 0 ? "W" : "B")) + " | ");
+            }
+            System.out.println();
+            System.out.println("  |---+---+---+---+---+---+---+---|");
+        }
+        System.out.println("    0   1   2   3   4   5   6   7  ");
+        //System.out.println("+-------------------------------+");
+
+        System.out.println();
+        System.out.println();
+        System.out.println("=============================================");
+        System.out.println();
+        System.out.println();
+    }
+
+    public static int[][] copy(int[][] arr) {
+        int[][] newArr = new int[arr.length][arr[0].length];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                newArr[i][j] = arr[i][j];
+            }
+        }
+        return newArr;
     }
 }
