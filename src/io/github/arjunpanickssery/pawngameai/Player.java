@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Player {
     public int[][] board;
     public int color;
+
     public ArrayList<Move> moves;
 
     public Player() {

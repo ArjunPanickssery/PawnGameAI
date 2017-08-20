@@ -11,17 +11,21 @@ public class Main {
     }
 
     public static void testWinRate(Player playerOne, Player playerTwo) {
-        Game game = new Game(8, 6, playerOne, playerTwo);
+        long startTime = System.currentTimeMillis();
+        Game game = new Game(8, 4, playerOne, playerTwo);
         int whiteWins = 0;
         int blackWins = 0;
         int draws = 0;
 
         final int TIMES = 100;
         int interval = 20;
+
+        long start;
         for (int i = 0; i < TIMES; i++) {
             if (i % (TIMES / interval) == 0) {
                 System.out.println(i * 100 / TIMES + "%");
             }
+            start = System.currentTimeMillis();
             switch (game.startGame().getResult()) {
                 case 1:
                     whiteWins++;
@@ -33,7 +37,11 @@ public class Main {
                     blackWins++;
                     break;
             }
+            System.out.println("---  " + (System.currentTimeMillis() - start) + " milliseconds");
         }
+        System.out.println();
+        System.out.println("Played " + TIMES + " games in " + (System.currentTimeMillis() - startTime) + " milliseconds.");
+        System.out.println();
         System.out.println("White Wins: " + whiteWins);
         System.out.println("Black Wins: " + blackWins);
         System.out.println("Draws: " + draws);
