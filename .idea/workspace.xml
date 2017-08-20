@@ -4,8 +4,6 @@
     <list default="true" id="38d4592d-326d-4809-8cbd-f5c3cfb73d7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java" afterPath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java" afterPath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/RandomPlayer.java" afterPath="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/RandomPlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +25,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state relative-caret-position="255">
+              <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -37,8 +35,8 @@
       <file leaf-file-name="MinimaxPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/MinimaxPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+            <state relative-caret-position="306">
+              <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -57,8 +55,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+            <state relative-caret-position="374">
+              <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -94,6 +92,7 @@
       <find>double</find>
       <find>board</find>
       <find>system</find>
+      <find>copy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,10 +112,10 @@
         <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/NegamaxPlayer.java" />
         <option value="$USER_HOME$/.IdeaIC2016.3/idea.exe.vmoptions" />
         <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Game.java" />
-        <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/MinimaxPlayer.java" />
         <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/RandomPlayer.java" />
         <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java" />
         <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java" />
+        <option value="$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/MinimaxPlayer.java" />
       </list>
     </option>
   </component>
@@ -143,7 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -176,8 +174,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -451,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503107713023</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update testWinRate() method.">
+      <created>1503193525153</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1503193525153</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -499,7 +505,8 @@
     <MESSAGE value="Fix bug in getMoves() method" />
     <MESSAGE value="Added MinimaxPlayer. Does not work." />
     <MESSAGE value="Fix MinimaxPlayer." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix MinimaxPlayer." />
+    <MESSAGE value="Update testWinRate() method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update testWinRate() method." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -511,6 +518,30 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -527,14 +558,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.IdeaIC2016.3/idea.exe.vmoptions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.IdeaIC2016.3/idea.exe.vmoptions" />
     <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
@@ -620,8 +644,8 @@
         <state relative-caret-position="153">
           <caret line="10" column="58" lean-forward="false" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
           <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -679,8 +703,8 @@
         <state relative-caret-position="170">
           <caret line="10" column="58" lean-forward="false" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
           <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,8 +754,8 @@
         <state relative-caret-position="170">
           <caret line="10" column="58" lean-forward="false" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
           <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#190#191#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -856,10 +880,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.IdeaIC2016.3/idea.exe.vmoptions">
+    <entry file="file://$USER_HOME$/.IdeaIC2016.3/idea.exe.vmoptions" />
+    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/RandomPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#190#191#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="14" lean-forward="false" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -872,37 +908,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/RandomPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#190#191#0" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/MinimaxPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1003">
-          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="306">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/arjunpanickssery/pawngameai/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="33" column="28" lean-forward="true" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+        <state relative-caret-position="255">
+          <caret line="27" column="51" lean-forward="false" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
           <folding />
         </state>
       </provider>

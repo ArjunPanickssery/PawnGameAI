@@ -20,12 +20,13 @@ public class Main {
         final int TIMES = 100;
         int interval = 20;
 
-        long start;
+        long start = System.currentTimeMillis();
         for (int i = 0; i < TIMES; i++) {
             if (i % (TIMES / interval) == 0) {
                 System.out.println(i * 100 / TIMES + "%");
+                System.out.println("---  " + (System.currentTimeMillis() - start) + " milliseconds");
+                start = System.currentTimeMillis();
             }
-            start = System.currentTimeMillis();
             switch (game.startGame().getResult()) {
                 case 1:
                     whiteWins++;
@@ -37,7 +38,6 @@ public class Main {
                     blackWins++;
                     break;
             }
-            System.out.println("---  " + (System.currentTimeMillis() - start) + " milliseconds");
         }
         System.out.println();
         System.out.println("Played " + TIMES + " games in " + (System.currentTimeMillis() - startTime) + " milliseconds.");
