@@ -1,12 +1,13 @@
 package io.github.arjunpanickssery.pawngameai;
 
 public class Move {
-    public static final String[] alphabet = {};
     private int startRow;
     private int startColumn;
     private int endRow;
     private int endColumn;
     private int type;
+    private int startPiece;
+    private int capturedPiece;
 
     public static final int ONE_SPACE_MOVE = 0;
     public static final int TWO_SPACE_MOVE = 1;
@@ -14,13 +15,16 @@ public class Move {
     public static final int EN_PASSANT_LEFT = 3;
     public static final int EN_PASSANT_RIGHT = 4;
 
+    public static final char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-    public Move(int startRow, int startColumn, int endRow, int endColumn, int type) {
+    public Move(int startRow, int startColumn, int endRow, int endColumn, int type, int startPiece, int capturedPiece) {
         this.startRow = startRow;
         this.startColumn = startColumn;
         this.endRow = endRow;
         this.endColumn = endColumn;
         this.type = type;
+        this.startPiece = startPiece;
+        this.capturedPiece = capturedPiece;
     }
 
     public String getMoveString() {
@@ -32,7 +36,6 @@ public class Move {
     }
 
     private String getColumnLetter(int i) {
-        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         return Character.toString(alphabet[i]);
     }
 
