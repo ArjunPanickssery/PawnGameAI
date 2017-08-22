@@ -12,7 +12,7 @@ public class Main {
 
     public static void testWinRate(Player playerOne, Player playerTwo) {
         long startTime = System.currentTimeMillis();
-        Game game = new Game(8, 4, playerOne, playerTwo);
+        Game game = new Game(8, 8, playerOne, playerTwo);
         int whiteWins = 0;
         int blackWins = 0;
         int draws = 0;

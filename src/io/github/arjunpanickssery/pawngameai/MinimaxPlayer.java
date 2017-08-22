@@ -16,7 +16,8 @@ public class MinimaxPlayer extends Player {
             bestScore = Integer.MIN_VALUE;
             for (Move move : moves) {
                 //System.out.println(moves.size());
-                score = minimax(playMove(Game.copy(board), move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.BLACK);
+                score = minimax(playMove(board, move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.BLACK);
+                undoMove(board, move);
                 //System.out.println("Score of " + move.getMoveString() + ": " + score);
                 if (score > bestScore) {
                     bestScore = score;
@@ -27,7 +28,8 @@ public class MinimaxPlayer extends Player {
         } else {
             bestScore = Integer.MAX_VALUE;
             for (Move move : moves) {
-                score = minimax(playMove(Game.copy(board), move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.WHITE);
+                score = minimax(playMove(board, move, color), DEPTH, Integer.MIN_VALUE, Integer.MAX_VALUE, Game.WHITE);
+                undoMove(board, move);
                 if (score < bestScore) {
                     bestScore = score;
                     bestMove = move;
@@ -74,7 +76,8 @@ public class MinimaxPlayer extends Player {
         if (color == Game.WHITE) {
             bestScore = Integer.MIN_VALUE;
             for (Move move : moves) {
-                bestScore = max(bestScore, minimax(playMove(Game.copy(board), move, color), depth - 1, alpha, beta, Game.BLACK));
+                bestScore = max(bestScore, minimax(playMove(board, move, color), depth - 1, alpha, beta, Game.BLACK));
+                undoMove(board, move);
                 alpha = max(alpha, bestScore);
                 if (beta <= alpha) {
                     return bestScore;
@@ -84,13 +87,35 @@ public class MinimaxPlayer extends Player {
         } else {
             bestScore = Integer.MAX_VALUE;
             for (Move move : moves) {
-                bestScore = min(bestScore, minimax(playMove(Game.copy(board), move, color), depth - 1, alpha, beta, Game.WHITE));
+                bestScore = min(bestScore, minimax(playMove(board, move, color), depth - 1, alpha, beta, Game.WHITE));
+                undoMove(board, move);
                 beta = min(beta, bestScore);
                 if (beta <= alpha) {
                     return bestScore;
                 }
             }
             return bestScore;
+        }
+    }
+
+    public void undoMove(int[][] board, Move move) {
+        board[move.getStartRow()][move.getStartColumn()] = move.getStartPiece();
+
+        switch (move.getType()) {
+            case Move.ONE_SPACE_MOVE:
+                break;
+            case Move.TWO_SPACE_MOVE:
+                board[move.getStartRow()][move.getStartColumn()] *= Game.CAN_DOUBLE_MOVE;
+                break;
+            case Move.REGULAR_CAPTURE:
+                board[move.getEndRow()][move.getEndColumn()] = move.getCapturedPiece();
+                break;
+            case Move.EN_PASSANT_LEFT:
+                board[move.getStartRow()][move.getStartColumn() - 1] = move.getCapturedPiece();
+                break;
+            case Move.EN_PASSANT_RIGHT:
+                board[move.getStartRow()][move.getStartColumn() + 1] = move.getCapturedPiece();
+                break;
         }
     }
 

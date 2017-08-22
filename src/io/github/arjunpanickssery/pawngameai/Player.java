@@ -21,18 +21,18 @@ public abstract class Player {
                 if (isCorrectColor(piece, color)) {
                     //Check for one-space moves
                     if (board[i + color][j] == 0) {
-                        moves.add(new Move(i, j, i + color, j, Move.ONE_SPACE_MOVE));
+                        moves.add(new Move(i, j, i + color, j, Move.ONE_SPACE_MOVE, piece, 0));
                         //Check for two space moves
                         if (piece % Game.CAN_DOUBLE_MOVE == 0) {
                             if (board[i + 2 * color][j] == 0) {
-                                moves.add(new Move(i, j, i + 2 * color, j, Move.TWO_SPACE_MOVE));
+                                moves.add(new Move(i, j, i + 2 * color, j, Move.TWO_SPACE_MOVE, piece, 0));
                             }
                         }
                     }
                     if (j > 0) {
                         //Check for regular captures (going left)
                         if (board[i + color][j - 1] != 0 && !isCorrectColor(board[i + color][j - 1], color)) {
-                            moves.add(new Move(i, j, i + color, j - 1, Move.REGULAR_CAPTURE));
+                            moves.add(new Move(i, j, i + color, j - 1, Move.REGULAR_CAPTURE, piece, board[i + color][j - 1]));
                         }
                         //Check for en passant captures (going left)
                         if ((color == Game.WHITE && i == board.length - 4) || (color == Game.BLACK && i == 3)) {
@@ -40,14 +40,14 @@ public abstract class Player {
                                     && (!isCorrectColor(board[i][j - 1], color))
                                     && (board[i][j - 1] % Game.CAN_BE_EN_PASSANTED == 0)
                                     && (board[i + color][j - 1] == 0)) {
-                                moves.add(new Move(i, j, i + color, j - 1, Move.EN_PASSANT_LEFT));
+                                moves.add(new Move(i, j, i + color, j - 1, Move.EN_PASSANT_LEFT, piece, board[i][j - 1]));
                             }
                         }
                     }
                     if (j < board[0].length - 1) {
                         //Check for regular captures (going right)
                         if (board[i + color][j + 1] != 0 && !isCorrectColor(board[i + color][j + 1], color)) {
-                            moves.add(new Move(i, j, i + color, j + 1, Move.REGULAR_CAPTURE));
+                            moves.add(new Move(i, j, i + color, j + 1, Move.REGULAR_CAPTURE, piece, board[i + color][j + 1]));
                         }
                         //Check for en passant captures (going right)
                         if ((color == Game.WHITE && i == board.length - 4) || (color == Game.BLACK && i == 3)) {
@@ -55,7 +55,7 @@ public abstract class Player {
                                     && (!isCorrectColor(board[i][j + 1], color))
                                     && (board[i][j + 1] % Game.CAN_BE_EN_PASSANTED == 0)
                                     && (board[i + color][j + 1] == 0)) {
-                                moves.add(new Move(i, j, i + color, j + 1, Move.EN_PASSANT_RIGHT));
+                                moves.add(new Move(i, j, i + color, j + 1, Move.EN_PASSANT_RIGHT, piece, board[i][j + 1]));
                             }
                         }
                     }

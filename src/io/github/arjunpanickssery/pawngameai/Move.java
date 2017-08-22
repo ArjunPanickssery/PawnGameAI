@@ -54,4 +54,12 @@ public class Move {
     public int getType() {
         return type;
     }
+
+    public int getStartPiece() {
+        return startPiece;
+    }
+
+    public int getCapturedPiece() {
+        return capturedPiece;
+    }
 }
